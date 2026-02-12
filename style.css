@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #e8e8e0;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.worksheet {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 2.5rem 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.worksheet-header {
+  border-bottom: 2px solid #222;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.worksheet-header h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.header-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.header-fields label {
+  font-weight: bold;
+}
+
+.header-fields .field-line {
+  display: inline-block;
+  border-bottom: 1px solid #222;
+  min-width: 140px;
+  margin-left: 0.25rem;
+}
+
+/* Directions */
+.directions {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Problem list */
+.problems {
+  list-style: none;
+  counter-reset: problem;
+}
+
+.problem-row {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1.35rem;
+}
+
+.problem-row:last-child {
+  border-bottom: none;
+}
+
+.problem-number {
+  counter-increment: problem;
+  min-width: 2.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.problem-number::before {
+  content: counter(problem) ".";
+}
+
+.problem-text {
+  flex: 1;
+}
+
+.problem-row input {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  width: 80px;
+  text-align: center;
+  border: none;
+  border-bottom: 1.5px solid #999;
+  padding: 0.15rem 0;
+  background: transparent;
+}
+
+.problem-row input:focus {
+  outline: none;
+  border-bottom-color: #333;
+}
+
+.problem-mark {
+  min-width: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
+
+.problem-mark.correct::after {
+  content: "\2713";
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.problem-mark.incorrect::after {
+  content: "\2717";
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* Footer */
+.worksheet-footer {
+  margin-top: 1.5rem;
+  border-top: 2px solid #222;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.score.graded {
+  font-size: 1.25rem;
+}
+
+#submit {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#submit:hover {
+  background: #555;
+}
+
+#submit:disabled {
+  background: #999;
+  cursor: default;
+}
+
+.correction {
+  font-size: 0.85rem;
+  color: #c62828;
+  text-align: right;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 500px) {
+  .worksheet {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .problem-row {
+    font-size: 1.15rem;
+  }
+
+  .header-fields {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
