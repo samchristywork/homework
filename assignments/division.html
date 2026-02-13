@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Division Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Division Practice</h1>
+    </div>
+    <p class="directions">Solve each division problem.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var b = generateNumber(2, 12);
+      var answer = generateNumber(2, 12);
+      var a = b * answer;
+      return { text: a + " ÷ " + b + " =", answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
