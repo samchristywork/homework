@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base-2 Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Base-2 Practice</h1>
+    </div>
+    <p class="directions">Convert each binary number to base 10.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var n = generateNumber(1, 255);
+      return { text: n.toString(2) + "₂ =", answer: n };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
