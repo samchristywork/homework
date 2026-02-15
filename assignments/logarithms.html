@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logarithm Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Logarithm Practice</h1>
+    </div>
+    <p class="directions">Evaluate each logarithm.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var bases = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+      var base = bases[generateNumber(0, bases.length - 1)];
+      var maxExp = Math.floor(Math.log(1000) / Math.log(base));
+      var exp = generateNumber(1, maxExp);
+      var value = Math.pow(base, exp);
+      return { text: "log" + "\u2009" + base + "(" + value + ") =", answer: exp };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
