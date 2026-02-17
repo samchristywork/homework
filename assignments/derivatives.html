@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Derivative Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Derivative Practice</h1>
+    </div>
+    <p class="directions">Find f'(a) for each function and value.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var a, c, n, answer, text;
+
+      if (type === 0) {
+        // f(x) = cx, f'(a) = c
+        c = generateNumber(2, 12);
+        a = generateNumber(1, 10);
+        answer = c;
+        text = "f(x) = " + c + "x, &nbsp;f'(" + a + ") =";
+      } else if (type === 1) {
+        // f(x) = cx², f'(a) = 2ca
+        c = generateNumber(1, 6);
+        a = generateNumber(1, 8);
+        answer = 2 * c * a;
+        if (c === 1) {
+          text = "f(x) = x\u00B2, &nbsp;f'(" + a + ") =";
+        } else {
+          text = "f(x) = " + c + "x\u00B2, &nbsp;f'(" + a + ") =";
+        }
+      } else {
+        // f(x) = cx³, f'(a) = 3ca²
+        c = generateNumber(1, 4);
+        a = generateNumber(1, 5);
+        answer = 3 * c * a * a;
+        if (c === 1) {
+          text = "f(x) = x\u00B3, &nbsp;f'(" + a + ") =";
+        } else {
+          text = "f(x) = " + c + "x\u00B3, &nbsp;f'(" + a + ") =";
+        }
+      }
+
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
