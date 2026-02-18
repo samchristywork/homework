@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Vector Practice</h1>
+    </div>
+    <p class="directions">Compute each vector operation.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var a1, a2, b1, b2, answer, text;
+
+      if (type === 0) {
+        // Dot product: ⟨a1, a2⟩ · ⟨b1, b2⟩
+        a1 = generateNumber(-6, 6);
+        a2 = generateNumber(-6, 6);
+        b1 = generateNumber(-6, 6);
+        b2 = generateNumber(-6, 6);
+        answer = a1 * b1 + a2 * b2;
+        text = "\u27E8" + a1 + ", " + a2 + "\u27E9 \u00B7 " +
+               "\u27E8" + b1 + ", " + b2 + "\u27E9 =";
+      } else if (type === 1) {
+        // Magnitude squared: ||⟨a1, a2⟩||²
+        a1 = generateNumber(-8, 8);
+        a2 = generateNumber(-8, 8);
+        answer = a1 * a1 + a2 * a2;
+        text = "||\u27E8" + a1 + ", " + a2 + "\u27E9||\u00B2 =";
+      } else {
+        // 2D cross product (scalar): ⟨a1, a2⟩ × ⟨b1, b2⟩
+        a1 = generateNumber(-6, 6);
+        a2 = generateNumber(-6, 6);
+        b1 = generateNumber(-6, 6);
+        b2 = generateNumber(-6, 6);
+        answer = a1 * b2 - a2 * b1;
+        text = "\u27E8" + a1 + ", " + a2 + "\u27E9 \u00D7 " +
+               "\u27E8" + b1 + ", " + b2 + "\u27E9 =";
+      }
+
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
