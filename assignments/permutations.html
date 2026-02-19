@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permutation Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Permutation Practice</h1>
+    </div>
+    <p class="directions">Evaluate each permutation.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function factorial(n) {
+      var result = 1;
+      for (var i = 2; i <= n; i++) result *= i;
+      return result;
+    }
+
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var n, r, answer, text;
+
+      if (type === 0) {
+        // P(n, r) = n! / (n - r)!
+        n = generateNumber(3, 10);
+        r = generateNumber(1, n);
+        answer = factorial(n) / factorial(n - r);
+        text = "P(" + n + ", " + r + ") =";
+      } else if (type === 1) {
+        // n!
+        n = generateNumber(2, 8);
+        answer = factorial(n);
+        text = n + "! =";
+      } else {
+        // n! / k! (arrange n items where k are identical)
+        n = generateNumber(3, 7);
+        var k = generateNumber(2, n);
+        answer = factorial(n) / factorial(k);
+        text = n + "! / " + k + "! =";
+      }
+
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
