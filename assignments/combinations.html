@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combination Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Combination Practice</h1>
+    </div>
+    <p class="directions">Evaluate each combination.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function factorial(n) {
+      var result = 1;
+      for (var i = 2; i <= n; i++) result *= i;
+      return result;
+    }
+
+    function generateProblem() {
+      var n = generateNumber(3, 12);
+      var r = generateNumber(1, n);
+      var answer = factorial(n) / (factorial(r) * factorial(n - r));
+      var text = "C(" + n + ", " + r + ") =";
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
