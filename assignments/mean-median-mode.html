@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mean, Median, and Mode Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Mean, Median, and Mode</h1>
+    </div>
+    <p class="directions">Find the requested value for each data set.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function shuffle(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+      }
+      return arr;
+    }
+
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var nums, answer, label;
+
+      if (type === 0) {
+        // Mean — generate numbers, adjust one so the sum is divisible by count
+        var count = generateNumber(4, 6);
+        nums = [];
+        var sum = 0;
+        for (var i = 0; i < count; i++) {
+          var n = generateNumber(1, 20);
+          nums.push(n);
+          sum += n;
+        }
+        var remainder = sum % count;
+        if (remainder !== 0) {
+          nums[0] += count - remainder;
+          sum += count - remainder;
+        }
+        answer = sum / count;
+        shuffle(nums);
+        label = "Mean";
+      } else if (type === 1) {
+        // Median — odd count so the middle value is always an integer
+        var count = generateNumber(0, 1) === 0 ? 5 : 7;
+        nums = [];
+        for (var i = 0; i < count; i++) {
+          nums.push(generateNumber(1, 30));
+        }
+        var sorted = nums.slice().sort(function (a, b) { return a - b; });
+        answer = sorted[Math.floor(count / 2)];
+        label = "Median";
+      } else {
+        // Mode — one value repeats, all others are unique
+        var mode = generateNumber(1, 20);
+        var freq = generateNumber(2, 3);
+        nums = [];
+        for (var i = 0; i < freq; i++) nums.push(mode);
+        var used = {};
+        used[mode] = true;
+        var extras = generateNumber(3, 5);
+        for (var i = 0; i < extras; i++) {
+          var n;
+          do { n = generateNumber(1, 25); } while (used[n]);
+          used[n] = true;
+          nums.push(n);
+        }
+        shuffle(nums);
+        answer = mode;
+        label = "Mode";
+      }
+
+      var text = label + " of {" + nums.join(", ") + "} =";
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
