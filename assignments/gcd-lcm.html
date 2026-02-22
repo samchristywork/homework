@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCD and LCM Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>GCD and LCM</h1>
+    </div>
+    <p class="directions">Find the greatest common divisor or least common multiple.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function gcd(a, b) {
+      while (b) { var t = b; b = a % b; a = t; }
+      return a;
+    }
+
+    function generateProblem() {
+      var a = generateNumber(4, 60);
+      var b = generateNumber(4, 60);
+      while (a === b) b = generateNumber(4, 60);
+
+      if (generateNumber(0, 1) === 0) {
+        return { text: "GCD(" + a + ", " + b + ") =", answer: gcd(a, b) };
+      } else {
+        return { text: "LCM(" + a + ", " + b + ") =", answer: a * b / gcd(a, b) };
+      }
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
