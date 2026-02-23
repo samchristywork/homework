@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summation Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Summation Notation</h1>
+    </div>
+    <p class="directions">Evaluate each summation.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var start, end, c, answer, expr, text;
+
+      if (type === 0) {
+        // Σ ci
+        c = generateNumber(1, 5);
+        start = generateNumber(1, 3);
+        end = start + generateNumber(2, 5);
+        answer = 0;
+        for (var i = start; i <= end; i++) answer += c * i;
+        expr = c === 1 ? "i" : c + "i";
+      } else if (type === 1) {
+        // Σ i²
+        start = 1;
+        end = generateNumber(3, 8);
+        answer = 0;
+        for (var i = start; i <= end; i++) answer += i * i;
+        expr = "i\u00B2";
+      } else {
+        // Σ (i + c)
+        c = generateNumber(1, 10);
+        start = generateNumber(1, 3);
+        end = start + generateNumber(2, 5);
+        answer = 0;
+        for (var i = start; i <= end; i++) answer += i + c;
+        expr = "(i + " + c + ")";
+      }
+
+      text = "\u03A3<sub>i=" + start + "</sub><sup>" + end + "</sup> " + expr + " =";
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
