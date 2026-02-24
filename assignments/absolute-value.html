@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absolute Value Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Absolute Value</h1>
+    </div>
+    <p class="directions">Evaluate each expression.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 2);
+      var a, b, answer, text;
+
+      if (type === 0) {
+        // |a - b|
+        a = generateNumber(1, 30);
+        b = generateNumber(1, 30);
+        answer = Math.abs(a - b);
+        text = "|" + a + " \u2212 " + b + "| =";
+      } else if (type === 1) {
+        // |a + b| where a is negative
+        a = generateNumber(-25, -1);
+        b = generateNumber(1, 25);
+        answer = Math.abs(a + b);
+        text = "|" + a + " + " + b + "| =";
+      } else {
+        // |a × b + c|
+        a = generateNumber(-8, 8);
+        b = generateNumber(2, 8);
+        var c = generateNumber(-20, 20);
+        answer = Math.abs(a * b + c);
+        var cStr = c >= 0 ? " + " + c : " \u2212 " + Math.abs(c);
+        text = "|" + a + " \u00D7 " + b + cStr + "| =";
+      }
+
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
