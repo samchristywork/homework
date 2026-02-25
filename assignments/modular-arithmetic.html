@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modular Arithmetic Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Modular Arithmetic</h1>
+    </div>
+    <p class="directions">Compute each modular expression.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var n = generateNumber(10, 200);
+      var m = generateNumber(2, 15);
+      var answer = n % m;
+      var text = n + " mod " + m + " =";
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
