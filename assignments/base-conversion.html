@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base Conversion Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Base Conversion</h1>
+    </div>
+    <p class="directions">Convert each base-10 number to the requested base. Provide the full converted number.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      if (generateNumber(0, 1) === 0) {
+        // Decimal to binary — keep small so the binary number fits as an integer
+        var n = generateNumber(2, 63);
+        var answer = parseInt(n.toString(2), 10);
+        return { text: n + " in base 2 =", answer: answer };
+      } else {
+        // Decimal to hex digit count or specific conversion
+        // Use small numbers so hex reads as a decimal-looking integer (digits 0-9 only)
+        var candidates = [];
+        for (var i = 1; i <= 99; i++) {
+          var hex = i.toString(16).toUpperCase();
+          if (/^[0-9]+$/.test(hex)) candidates.push(i);
+        }
+        var n = candidates[generateNumber(0, candidates.length - 1)];
+        var answer = parseInt(n.toString(16), 10);
+        return { text: n + " in base 16 =", answer: answer };
+      }
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
