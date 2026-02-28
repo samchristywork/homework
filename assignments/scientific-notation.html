@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Notation Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Scientific Notation</h1>
+    </div>
+    <p class="directions">Evaluate each expression.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 1);
+
+      if (type === 0) {
+        // What is the exponent? e.g. 3500 = 3.5 × 10^?
+        var exp = generateNumber(2, 7);
+        var coeff = generateNumber(1, 9);
+        var n = coeff * Math.pow(10, exp);
+        var text = n.toLocaleString("en-US") + " = " + coeff + " \u00D7 10<sup>?</sup> &mdash; find the exponent =";
+        return { text: text, answer: exp };
+      } else {
+        // Evaluate: c × 10^e
+        var exp = generateNumber(1, 5);
+        var coeff = generateNumber(1, 9);
+        var answer = coeff * Math.pow(10, exp);
+        var text = coeff + " \u00D7 10<sup>" + exp + "</sup> =";
+        return { text: text, answer: answer };
+      }
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
