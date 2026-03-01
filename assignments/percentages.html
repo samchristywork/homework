@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Percentages</h1>
+    </div>
+    <p class="directions">Solve each percentage problem.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var type = generateNumber(0, 1);
+
+      if (type === 0) {
+        // What is p% of n?
+        var pcts = [5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 80, 90, 100];
+        var p = pcts[generateNumber(0, pcts.length - 1)];
+        // Pick n so that p% of n is an integer
+        var scale = 100 / gcd(p, 100);
+        var n = generateNumber(1, Math.floor(500 / scale)) * scale;
+        var answer = p * n / 100;
+        var text = "What is " + p + "% of " + n + "? =";
+        return { text: text, answer: answer };
+      } else {
+        // a is what percent of b?
+        var answer = [5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 80, 90, 100][generateNumber(0, 12)];
+        var b = generateNumber(2, 20) * (100 / gcd(answer, 100));
+        var a = answer * b / 100;
+        var text = a + " is what percent of " + b + "? =";
+        return { text: text, answer: answer };
+      }
+    }
+
+    function gcd(a, b) {
+      while (b) { var t = b; b = a % b; a = t; }
+      return a;
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
