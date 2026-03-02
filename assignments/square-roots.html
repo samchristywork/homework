@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Square Root Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Square Roots</h1>
+    </div>
+    <p class="directions">Find the square root of each number.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var root = generateNumber(2, 25);
+      var n = root * root;
+      return { text: "\u221A" + n + " =", answer: root };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
