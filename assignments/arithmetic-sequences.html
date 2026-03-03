@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic Sequence Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Arithmetic Sequences</h1>
+    </div>
+    <p class="directions">Find the requested term or sum.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function generateProblem() {
+      var a1 = generateNumber(1, 20);
+      var d = generateNumber(1, 10);
+      var type = generateNumber(0, 1);
+
+      if (type === 0) {
+        // Find the nth term: a_n = a1 + (n-1)d
+        var n = generateNumber(5, 15);
+        var answer = a1 + (n - 1) * d;
+        var text = "a\u2081 = " + a1 + ", d = " + d +
+          " &mdash; find a<sub>" + n + "</sub> =";
+        return { text: text, answer: answer };
+      } else {
+        // Find the sum of first n terms: S = n/2 * (2a1 + (n-1)d)
+        // Use even n to guarantee integer
+        var n = generateNumber(2, 8) * 2;
+        var answer = n * (2 * a1 + (n - 1) * d) / 2;
+        var text = "a\u2081 = " + a1 + ", d = " + d +
+          " &mdash; find S<sub>" + n + "</sub> =";
+        return { text: text, answer: answer };
+      }
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
