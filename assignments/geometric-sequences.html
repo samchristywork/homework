@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Sequence Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Geometric Sequences</h1>
+    </div>
+    <p class="directions">Find the nth term of each geometric sequence.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    // Curated (a1, r, maxN) to keep answers reasonable
+    var configs = [
+      [1, 2, 12], [1, 3, 7], [1, 4, 5], [1, 5, 5],
+      [2, 2, 11], [2, 3, 6], [3, 2, 10], [3, 3, 6],
+      [4, 2, 9],  [5, 2, 9], [5, 3, 5],
+      [2, 5, 4],  [1, 6, 5], [1, 7, 4]
+    ];
+
+    function generateProblem() {
+      var cfg = configs[generateNumber(0, configs.length - 1)];
+      var a1 = cfg[0], r = cfg[1], maxN = cfg[2];
+      var n = generateNumber(2, maxN);
+      var answer = a1 * Math.pow(r, n - 1);
+      var text = "a\u2081 = " + a1 + ", r = " + r +
+        " &mdash; find a<sub>" + n + "</sub> =";
+      return { text: text, answer: answer };
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
