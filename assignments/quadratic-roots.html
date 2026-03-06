@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadratic Roots Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="worksheet">
+    <div class="worksheet-header">
+      <h1>Quadratic Roots</h1>
+    </div>
+    <p class="directions">Find the sum or product of the roots of each quadratic.</p>
+    <ol class="problems" id="problems"></ol>
+    <div class="worksheet-footer">
+      <span class="score" id="score"></span>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <script>
+    function fmtTerm(coeff, v, first) {
+      if (coeff === 0) return "";
+      var s = "";
+      if (!first && coeff > 0) s = " + ";
+      if (!first && coeff < 0) s = " \u2212 ";
+      var abs = Math.abs(coeff);
+      if (first && coeff < 0) s = "\u2212";
+      if (v === "") return s + abs;
+      if (abs === 1) return s + v;
+      return s + abs + v;
+    }
+
+    function generateProblem() {
+      // Build from roots: (x - r1)(x - r2) = x² - (r1+r2)x + r1*r2
+      var r1 = generateNumber(-9, 9);
+      var r2 = generateNumber(-9, 9);
+      var sumR = r1 + r2;
+      var prodR = r1 * r2;
+
+      // a=1: x² + bx + c where b = -(r1+r2), c = r1*r2
+      var b = -sumR;
+      var c = prodR;
+
+      var poly = "x\u00B2" + fmtTerm(b, "x", false) + fmtTerm(c, "", false);
+
+      if (generateNumber(0, 1) === 0) {
+        var text = poly + " = 0 &mdash; sum of roots =";
+        return { text: text, answer: sumR };
+      } else {
+        var text = poly + " = 0 &mdash; product of roots =";
+        return { text: text, answer: prodR };
+      }
+    }
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
